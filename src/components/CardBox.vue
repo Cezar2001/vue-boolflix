@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="film-post">
             <img 
             :src="'https://image.tmdb.org/t/p/original/' + film.poster_path"
@@ -13,7 +12,6 @@
                 <div>Overview: {{film.overview}}</div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
