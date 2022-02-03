@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar @search="chooseFilm" />
-    <main-container />
+    <main-container :filmList="filmList" />
   </div>
 </template>
 
@@ -19,25 +19,16 @@ export default {
   data() {
     return{
       filmList:[],
-      filmListFiltered:[],
     }
   },
   methods: {
-    chooseFilm() {
+    chooseFilm(keyword) {
       let url = "https://api.themoviedb.org/3/search/movie?query=";
-      let keyword = "@search"
-      let apiId = "&api_key=f655c752493edcdf5f88d9b75b5667fd"
-        const link = axios.get(url + keyword + apiId).then((results) => {
-        this.filmList = results.data  
-        this.filmListFiltered = results.data  
+      let apiId = "&api_key=f655c752493edcdf5f88d9b75b5667fd";
+      axios.get(url + keyword + apiId).then((response) => {
+        this.filmList = response.data.results;
       })
-      this.filmList.push(link);
-      // return link.title
-      console.log(link.title)
-    },
-  //   stampFilm() {
-  //     this.filmListFiltered = this.filmList.
-  //   }
+    }
   }
 }
 </script>
