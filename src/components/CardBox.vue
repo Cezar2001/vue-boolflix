@@ -1,13 +1,14 @@
 <template>
         <div class="film-post">
             <img 
+            class="post-img"
             :src="'https://image.tmdb.org/t/p/original/' + film.poster_path"
             >
 
             <div class="hover-card">
                 <div>Titolo: {{film.title}}</div>
                 <div>Titolo originale: {{film.original_title}}</div>
-                <div>Lingua originale: {{film.original_language}}
+                <div class="box-flag">Lingua originale: {{film.original_language}}
                     <img class="flag" :src="`/flags/${film.original_language}.png`">
                 </div>      
                 <div>Voto: {{film.vote_average}}</div>
@@ -32,7 +33,7 @@ export default {
     border: 5px white solid;
     cursor: pointer;
 
-    img{
+    .post-img{
         width: 100%;
         height: 100%;
     }  
@@ -42,7 +43,7 @@ export default {
         overflow: auto;
         color: white;
 
-        img{
+        .post-img{
             display: none;
         }
 
@@ -52,11 +53,17 @@ export default {
             div{
                 padding: 2px;
             }
+        }
+    }
 
-            .flag{
-                height: 25px;
-                height: 20px;
-            }
+    .box-flag{
+        display: flex;
+        align-items: center;
+
+        .flag{
+            width: 15px;
+            height: 15px;
+            margin-left: 5px;
         }
     }
 }
