@@ -2,29 +2,36 @@
         <div class="film-post">
             <img 
             class="post-img"
-            :src="'https://image.tmdb.org/t/p/original/' + film.poster_path"
+            :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"
             >
 
             <div class="hover-card">
                 <div>
-                    <span v-if="film.title">Title: {{film.title}}</span>
-                    <span v-else>Title: Not Defined</span>
+                    <span v-if="item.title">Title: {{item.title}}</span>
+                    <span v-else>Title: {{item.name}}</span>
                 </div>
 
                 <div>
-                    <span v-if="film.title">Original Title: {{film.original_title}}</span>
-                    <span v-else>Original Title: Not Defined</span>
+                    <span v-if="item.original_title">Original Title: {{item.original_title}}</span>
+                    <span v-else>Original Title: {{item.original_name}}</span>
                 </div>
-                
+
                 <div class="box-flag">Lingua originale: 
-                    <span v-if="film.original_language === null">Not Defined</span>
+                    <span v-if="item.original_language === null">Not Defined</span>
                     <span v-else>
-                        {{film.original_language}}
-                        <img class="flag" :src="`/flags/${film.original_language}.png`">
+                        {{item.original_language}}
+                        <img class="flag" :src="`/flags/${item.original_language}.png`">
                     </span>
-                </div>      
-                <div>Voto: {{film.vote_average}}</div>
-                <div>Overview: {{film.overview}}</div>
+                </div> 
+
+                <div>
+                    Vote: 
+                    <i
+                    v-for="index in Math.round(item.vote_average / 2)"
+                    :key="index"
+                    class="fas fa-star"></i>
+                </div>
+                <div>Overview: {{item.overview}}</div>
             </div>
         </div>
 </template>
@@ -32,7 +39,7 @@
 <script>
 export default {
     props: {
-        film: Object
+        item: Object,
     },
 }
 </script>

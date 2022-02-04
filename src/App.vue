@@ -1,29 +1,39 @@
 <template>
   <div id="app">
     <nav-bar @search="research" />
-    <main-container :filmList="filmList" />
+    <main-container 
+    :filmList="filmList"
+    :serisList="seriesList" 
+    />
+    <popular-trend />
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
 import MainContainer from './components/MainContainer.vue';
+import PopularTrend from './components/PopularTrend.vue';
 import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    MainContainer
+    MainContainer,
+    PopularTrend
   },
   data() {
     return{
       filmList:[],
+      seriesList:[],
+      popularList:[],
       api_key: 'f655c752493edcdf5f88d9b75b5667fd'
     }
   },
   mounted() {
-
+    // axios.get('https://api.themoviedb.org/3/get-popular-movies').then((response) => {
+    //   this.popularList = response.results
+    // })
   },
   methods: {
     research(query) {
@@ -34,7 +44,7 @@ export default {
       this.filmList = await this.callApi('movie', query)
     },
     async searchSeries(query) {
-      this.filmList = await this.callApi('tv', query)
+      this.seriesList = await this.callApi('tv', query)
     },
     async callApi(type, query) {
       const params = {

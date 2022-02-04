@@ -3,7 +3,12 @@
         <card-box
         v-for="film in filmList"
         :key="film.id"
-        :film="film" />
+        :item="film" />
+
+        <card-box
+        v-for="series in seriesList"
+        :key="series.id"
+        :item="series" />
     </div>
 </template>
 
@@ -15,6 +20,7 @@ export default {
     },
     props: {
         filmList: Array,
+        seriesList: Array,
     },
 }
 </script>
