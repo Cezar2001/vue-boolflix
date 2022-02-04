@@ -6,10 +6,22 @@
             >
 
             <div class="hover-card">
-                <div>Titolo: {{film.title}}</div>
-                <div>Titolo originale: {{film.original_title}}</div>
-                <div class="box-flag">Lingua originale: {{film.original_language}}
-                    <img class="flag" :src="`/flags/${film.original_language}.png`">
+                <div>
+                    <span v-if="film.title">Title: {{film.title}}</span>
+                    <span v-else>Title: Not Defined</span>
+                </div>
+
+                <div>
+                    <span v-if="film.title">Original Title: {{film.original_title}}</span>
+                    <span v-else>Original Title: Not Defined</span>
+                </div>
+                
+                <div class="box-flag">Lingua originale: 
+                    <span v-if="film.original_language === null">Not Defined</span>
+                    <span v-else>
+                        {{film.original_language}}
+                        <img class="flag" :src="`/flags/${film.original_language}.png`">
+                    </span>
                 </div>      
                 <div>Voto: {{film.vote_average}}</div>
                 <div>Overview: {{film.overview}}</div>
@@ -56,7 +68,7 @@ export default {
         }
     }
 
-    .box-flag{
+    .box-flag, span{
         display: flex;
         align-items: center;
 
