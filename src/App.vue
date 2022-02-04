@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav-bar @search="chooseFilm" />
+    <nav-bar @search="research" />
     <main-container :filmList="filmList" />
   </div>
 </template>
@@ -19,15 +19,33 @@ export default {
   data() {
     return{
       filmList:[],
+      api_key: 'f655c752493edcdf5f88d9b75b5667fd'
     }
   },
+  mounted() {
+
+  },
   methods: {
-    chooseFilm(keyword) {
-      let url = "https://api.themoviedb.org/3/search/movie?query=";
-      let apiId = "&api_key=f655c752493edcdf5f88d9b75b5667fd";
-      axios.get(url + keyword + apiId).then((response) => {
-        this.filmList = response.data.results;
+    research(query) {
+      this.searchFilm(query)
+      this.searchSeries(query)
+    },
+    async searchFilm(query) {
+      this.filmList = await this.callApi('movie', query)
+    },
+    async searchSeries(query) {
+      this.filmList = await this.callApi('tv', query)
+    },
+    async callApi(type, query) {
+      const params = {
+        query: query,
+        api_key: this.api_key
+      }
+      const results = await axios.get(`https://api.themoviedb.org/3/search/${type}`, { params })
+      .then((response) => {
+        return response.data.results;
       })
+      return results;
     }
   }
 }

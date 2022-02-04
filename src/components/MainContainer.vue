@@ -14,7 +14,7 @@ export default {
         CardBox
     },
     props: {
-        filmList: Array
+        filmList: Array,
     },
 }
 </script>

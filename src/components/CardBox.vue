@@ -7,7 +7,9 @@
             <div class="hover-card">
                 <div>Titolo: {{film.title}}</div>
                 <div>Titolo originale: {{film.original_title}}</div>
-                <div>Lingua originale: {{film.original_language}}</div>
+                <div>Lingua originale: {{film.original_language}}
+                    <img class="flag" :src="`/flags/${film.original_language}.png`">
+                </div>      
                 <div>Voto: {{film.vote_average}}</div>
                 <div>Overview: {{film.overview}}</div>
             </div>
@@ -18,7 +20,7 @@
 export default {
     props: {
         film: Object
-    }
+    },
 }
 </script>
 
@@ -49,6 +51,11 @@ export default {
         
             div{
                 padding: 2px;
+            }
+
+            .flag{
+                height: 25px;
+                height: 20px;
             }
         }
     }
