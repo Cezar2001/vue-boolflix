@@ -1,11 +1,34 @@
 <template>
-    <div>
-        <h1>BOOLFLIX</h1>
+    <div class="container">
+        <div>
+            <h1>BOOLFLIX</h1>
+            <ul>
+                <li>Home</li>
+                <li>Serie TV</li>
+                <li>Film</li>
+                <li>Original</li>
+                <li>Aggiunti di recente</li>
+                <li>La mia lista</li>
+            </ul>
+        </div>
         <div>
             <input type="text"
             placeholder="Search"
             v-model="keywordSearch">
-            <button @click="$emit('search', keywordSearch)">Search</button>
+
+            <div  
+            @click="$emit('search', keywordSearch)"
+            class="search">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <span>Bambini</span>
+
+            <i class="fas fa-bell"></i>
+
+            <img class="neflix-pic" :src="`/flags/netflixpic.png`">
+
+            <i class="fas fa-caret-down"></i>
         </div>
     </div>
 </template>
@@ -22,13 +45,64 @@ export default {
 
 <style lang="scss" scoped>
 @import '../style/variables.scss';
-div {
-    padding-top: 15px;
-    background-color: black;
-    height: 100px;
+.container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $grey-color;
 
-    h1{
-        color: red;
+    div{
+        display: flex;
+        align-items: center;
+
+        h1{
+            color: $red-color;
+        }
+
+        ul{
+            display: flex;
+            margin-left: 25px;
+        }
+
+        li{
+            list-style: none;
+            margin: 10px;
+
+            &:hover{
+                color: $white-color;
+            }
+        }
+
+        input{
+            background: $dark-grey-color;
+            border: 1px $grey-color solid;
+            color: $white-color;
+            border-radius: 10px;
+            margin-right: 5px;
+            padding: 5px;
+        }
+
+        .search{
+            padding: 5px 0;   
+        }
+
+        i, span{
+            margin: 0 8px;
+
+            &:hover{
+                color: $white-color;
+            }
+        }
+
+        img{
+            height: 30px;
+            margin: 0 5px;
+            
+            &:hover{
+                border: 1px $white-color solid;
+            }
+        }
     }
 }
 </style>

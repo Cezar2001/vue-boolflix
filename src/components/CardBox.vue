@@ -45,11 +45,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>     
+@import '../style/variables.scss';
 .film-post{
     height: 350px;
-    margin: 25px;
+    margin: 5px 2px;
     width: 250px;
-    border: 5px white solid;
     cursor: pointer;
 
     .post-img{
@@ -58,9 +58,9 @@ export default {
     }  
 
     &:hover{
-        background-color: black;
+        background-color: $dark-color;
         overflow: auto;
-        color: white;
+        color: $white-color;
 
         .post-img{
             display: none;
@@ -89,7 +89,7 @@ export default {
 
 .hover-card{
     display: none;
-    color: white;
+    color: $white-color;
     padding: 15px;
 }
 </style>
