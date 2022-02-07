@@ -1,15 +1,17 @@
 <template>
-    <div>
-        <!-- <div
-        v-for="popular in popularFilms"
-        :key="popular.id"> -->
-        <!-- </div> -->
-        
+<div>
+    <div class="trend"> 
         <card-box
-            v-for="popular in popularList"
-            :key="popular.id"
-            :result="popular" />
+        v-for="popular in popularList"
+        :key="popular.id"
+        :item="popular" />
+
+        <card-box
+        v-for="tv in popularTvList"
+        :key="tv.id"
+        :item="tv" />
     </div>
+</div>
 </template>
 
 <script>
@@ -19,17 +21,15 @@ export default {
         CardBox
     },
     props: {
-        popularList: Array
+        popularList: Array,
+        popularTvList: Array,
     }
 }
 </script>
 
 <style lang="scss" scoped>
-div{
+@import '../style/variables.scss';
+.trend{
     display: flex;
-    flex-wrap: wrap;
-    width: 500px;
-    height: 200px;
-    background-color: teal;
 }
 </style>

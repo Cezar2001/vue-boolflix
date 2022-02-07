@@ -5,6 +5,7 @@
     :filmList="filmList"
     :serisList="seriesList" 
     :popularList="popularList"
+    :popularTvList="popularTvList"
     />
   </div>
 </template>
@@ -25,12 +26,16 @@ export default {
       filmList:[],
       seriesList:[],
       popularList:[],
+      popularTvList:[],
       api_key: 'f655c752493edcdf5f88d9b75b5667fd'
     }
   },
   mounted() {
     axios.get(`https://api.themoviedb.org/3/movie/popular?&api_key=f655c752493edcdf5f88d9b75b5667fd`).then((response) => {
-      this.popularList = response.results
+      this.popularList = response.data.results;
+    })
+    axios.get(`https://api.themoviedb.org/3/tv/popular?&api_key=f655c752493edcdf5f88d9b75b5667fd`).then((response) => {
+      this.popularTvList = response.data.results;
     })
   },
   methods: {
