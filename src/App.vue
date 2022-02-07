@@ -4,15 +4,14 @@
     <main-container 
     :filmList="filmList"
     :serisList="seriesList" 
+    :popularList="popularList"
     />
-    <popular-trend />
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
 import MainContainer from './components/MainContainer.vue';
-import PopularTrend from './components/PopularTrend.vue';
 import axios from 'axios';
 
 export default {
@@ -20,7 +19,6 @@ export default {
   components: {
     NavBar,
     MainContainer,
-    PopularTrend
   },
   data() {
     return{
@@ -31,9 +29,9 @@ export default {
     }
   },
   mounted() {
-    // axios.get('https://api.themoviedb.org/3/get-popular-movies').then((response) => {
-    //   this.popularList = response.results
-    // })
+    axios.get('https://api.themoviedb.org/3/get-popular-movies?api_key=f655c752493edcdf5f88d9b75b5667fd').then((response) => {
+      this.popularList = response.results
+    })
   },
   methods: {
     research(query) {

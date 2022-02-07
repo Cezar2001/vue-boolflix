@@ -2,7 +2,13 @@
         <div class="film-post">
             <img 
             class="post-img"
+            v-if="item.poster_path"
             :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"
+            >
+            <img 
+            class="post-img"
+            v-else
+            :src="`/flags/nopost.png`"
             >
 
             <div class="hover-card">
@@ -24,13 +30,16 @@
                     </span>
                 </div> 
 
-                <div>
-                    Vote: 
+                <div
+                v-if="item.vote_average"
+                > Vote: 
                     <i
                     v-for="index in Math.round(item.vote_average / 2)"
                     :key="index"
                     class="fas fa-star"></i>
                 </div>
+                <div
+                v-else>Vote: No Vote</div>
                 <div>Overview: {{item.overview}}</div>
             </div>
         </div>
@@ -55,6 +64,7 @@ export default {
     .post-img{
         width: 100%;
         height: 100%;
+        object-fit: fill;
     }  
 
     &:hover{

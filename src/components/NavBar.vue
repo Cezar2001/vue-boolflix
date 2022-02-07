@@ -24,6 +24,8 @@
 
             <span>Bambini</span>
 
+            <div class="circle">1</div>
+
             <i class="fas fa-bell"></i>
 
             <img class="neflix-pic" :src="`/flags/netflixpic.png`">
@@ -85,6 +87,19 @@ export default {
 
         .search{
             padding: 5px 0;   
+        }
+
+        .circle{
+            position: relative;
+            top: -3px;
+            left: 27px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            font-size: 10px;
+            padding: 2px 0 3px 2px;
+            color: $white-color;
+            background-color: $red-color;
         }
 
         i, span{

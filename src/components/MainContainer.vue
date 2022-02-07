@@ -12,19 +12,26 @@
             v-for="series in seriesList"
             :key="series.id"
             :item="series" />
+
+            <popular-trend 
+            :popularList="popularList"/>
         </div>
     </div>
 </template>
 
 <script>
 import CardBox from './CardBox.vue';
+import PopularTrend from './PopularTrend.vue';
+
 export default {
     components: {
-        CardBox
+        CardBox,
+        PopularTrend,
     },
     props: {
         filmList: Array,
         seriesList: Array,
+        popularList:Array
     },
 }
 </script>
