@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('https://api.themoviedb.org/3/get-popular-movies?api_key=f655c752493edcdf5f88d9b75b5667fd').then((response) => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?&api_key=f655c752493edcdf5f88d9b75b5667fd`).then((response) => {
       this.popularList = response.results
     })
   },

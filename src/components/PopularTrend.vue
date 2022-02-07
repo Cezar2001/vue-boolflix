@@ -28,7 +28,8 @@ export default {
 div{
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 35px;
-    margin-bottom: 25px;
+    width: 500px;
+    height: 200px;
+    background-color: teal;
 }
 </style>
